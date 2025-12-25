@@ -11,7 +11,7 @@ class MainController extends Controller
         return view("home");
     }
 
-    public function generateExercises(Request $request) {
+    public function generateExercises(Request $request): View {
         // Form vadidation:
         $request->validate([
             "check_sum" => "required_without_all:check_subtraction,check_multiplication,check_division",
@@ -87,7 +87,7 @@ class MainController extends Controller
             ];
         }
 
-        dd($exercises);
+        return view("operations", ["exercises" => $exercises]);
     }
 
     public function printExercises() {
